@@ -1,23 +1,52 @@
-import React from "react";
 import {
+  ZoomableGroup,
   ComposableMap,
   Geographies,
   Geography,
+  Sphere,
   Graticule,
 } from "react-simple-maps";
+import { Link } from "react-router-dom";
 
-const MapChart = () => {
+const MapChart = ({ setTooltipContent }) => {
   return (
-    <ComposableMap projectionConfig={{ scale: 147 }}>
-      <Graticule stroke="#F53" />
-      <Geographies geography="/features.json">
-        {({ geographies }) =>
-          geographies.map((geo) => (
-            <Geography key={geo.rsmKey} geography={geo} />
-          ))
-        }
-      </Geographies>
-    </ComposableMap>
+    <div data-tip="">
+      <ComposableMap projectionConfig={{ rotate: [-10, 0, 0], scale: 147 }}>
+        <ZoomableGroup>
+          <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
+          <Graticule stroke="#E4E5E6" strokeWidth={0.5} />
+
+          <Geographies geography="/features.json">
+            {({ geographies }) =>
+              geographies.map((geo) => {
+                return (
+                  <Link
+                    to={`covid-data/${geo.properties.name}`}
+                    key={geo.rsmKey}
+                  >
+                    <Geography
+                      geography={geo}
+                      onMouseEnter={() =>
+                        setTooltipContent(geo.properties.name)
+                      }
+                      onMouseLeave={() => setTooltipContent("")}
+                      style={{
+                        default: {
+                          fill: "#888",
+                        },
+                        hover: {
+                          fill: "#F00",
+                        },
+                      }}
+                    />
+                  </Link>
+                );
+              })
+            }
+          </Geographies>
+        </ZoomableGroup>
+      </ComposableMap>
+    </div>
   );
 };
 

@@ -1,17 +1,28 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
+import { createHashRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+//import CovidData, { loader as covidDataLoader } from "./CovidData";
+//import ErrorPage from "./ErrorPage";
 
-import "./styles.css";
+const router = createHashRouter([
+  {
+    path: "/",
+    element: <App />,
+    // errorElement: <ErrorPage />,
+  },
+  {
+    path: "covid-data/:countryName",
+    //element: <CovidData />,
+    // errorElement: <ErrorPage />,
+    // loader: covidDataLoader,
+  },
+]);
 
-import MapChart from "./components/MapChart";
-
-function App() {
-  return (
-    <div>
-      <MapChart />
-    </div>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
