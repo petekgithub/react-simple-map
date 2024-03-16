@@ -35,7 +35,7 @@ const MapChart = ({ setTooltipContent }) => {
                           fill: "#888",
                         },
                         hover: {
-                          fill: "#F00",
+                          fill: "#47edb6",
                         },
                       }}
                     />
