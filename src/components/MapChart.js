@@ -20,11 +20,7 @@ const MapChart = ({ setTooltipContent }) => {
             {({ geographies }) =>
               geographies.map((geo) => {
                 return (
-                  <Link
-                    // to={`covid-data/${geo.properties.name}`}
-                    to={`covid-data/${geo.id}`}
-                    key={geo.rsmKey}
-                  >
+                  <Link to={`covid-data/${geo.id}`} key={geo.rsmKey}>
                     <Geography
                       geography={geo}
                       onMouseEnter={() =>

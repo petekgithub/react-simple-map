@@ -14,7 +14,7 @@ body {
   grid-template-rows: auto 5rem auto repeat(3, 5rem) auto;
   gap: 2rem;
   transition: all 1s;
-  position: relative; /* Mutlaka position:relative olarak ayarlayın */
+  position: relative;
 }
 
 /* Sayfa merkezine hizalamak için */
@@ -22,7 +22,7 @@ body {
   content: "";
   display: block;
   width: 0;
-  height: 100%; /* Yükseklik 100% olarak ayarlanır */
+  height: 100%;
 }
 
 /* Yatayda merkezlemek için */
@@ -42,13 +42,13 @@ body {
 
 /* Sayfanın alt kısmına yerleştirmek için */
 .btn-container {
-  grid-column: 1 / span 3; /* Map butonunun tüm genişliği kaplaması için */
+  grid-column: 1 / span 3;
   display: flex;
-  justify-content: flex-start; /* Yatayda ortalamak için */
-  align-items: center; /* Dikeyde ortalamak için */
-  margin-top: 2rem; /* Butonun üstünde boşluk bırakmak için */
-  grid-row: 6; /* 4. satıra yerleştir */
-  position: relative; /* Mutlaka position:relative olarak ayarlayın */
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 2rem;
+  grid-row: 6;
+  position: relative;
 }
 
 .card {
@@ -82,15 +82,15 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  grid-column: span 1; /* Her biri 1 kolon genişliği alacak */
+  grid-column: span 1;
 }
 
 .checked {
-  grid-row: 4; /* 4. satıra yerleştir */
+  grid-row: 4;
 }
 
 .reported {
-  grid-row: 4; /* 5. satıra yerleştir */
+  grid-row: 4;
 }
 .checked:hover,
 .reported:hover {
@@ -113,8 +113,8 @@ body {
     }
     .checked,
     .reported {
-      grid-row: auto; /* Mevcut satır ayarlarını otomatik olarak bırakır */
-      grid-column: span 1; /* Her biri 1 kolon genişliği alacak */
+      grid-row: auto;
+      grid-column: span 1;
     }
     .btn-container {
       grid-column: 1 / span 2;
@@ -128,19 +128,19 @@ body {
   }
 
   .location {
-    grid-column: 1; /* Tek sütun olduğu için tüm sütunu kaplasın */
-    grid-row: 1; /* En üst satırda yer alsın */
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .checked,
   .reported {
-    grid-column: 1; /* Tek sütun olduğu için tüm sütunu kaplasın */
-    font-size: 1rem; /* Font boyutunu küçült */
-    grid-row: auto; /* Mevcut satır ayarlarını otomatik olarak bırakır */
+    grid-column: 1;
+    font-size: 1rem;
+    grid-row: auto;
   }
 
   .btn-container {
-    grid-column: 1; /* Tek sütun olduğu için tüm sütunu kaplasın */
-    grid-row: 7; /* En alt satırda yer alsın */
+    grid-column: 1;
+    grid-row: 7;
   }
 }
