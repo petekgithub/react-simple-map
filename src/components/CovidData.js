@@ -105,9 +105,16 @@ const CovidData = () => {
         </div>
         <div>
           <span className="font-bold">Location:</span>{" "}
-          {/* {covidData.data.location.toUpperCase() || "N/A"} */}
-          {covidData.data[0].region?.name
-            ? `${covidData.data[0].region.province.toUpperCase()}, ${covidData.data[0].region.name.toUpperCase()}`
+          {covidData.data[0].region
+            ? `${
+                covidData.data[0].region.province
+                  ? `${covidData.data[0].region.province.toUpperCase()}, `
+                  : ""
+              }${
+                covidData.data[0].region.name
+                  ? covidData.data[0].region.name.toUpperCase()
+                  : ""
+              }`
             : "N/A"}
         </div>
       </div>
