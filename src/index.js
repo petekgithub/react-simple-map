@@ -13,7 +13,7 @@ const router = createHashRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "covid-data/:countryName",
+    path: "covid-data/:countryCode",
     element: <CovidData />,
     errorElement: <ErrorPage />,
     loader: covidDataLoader,

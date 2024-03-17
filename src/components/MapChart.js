@@ -21,7 +21,8 @@ const MapChart = ({ setTooltipContent }) => {
               geographies.map((geo) => {
                 return (
                   <Link
-                    to={`covid-data/${geo.properties.name}`}
+                    // to={`covid-data/${geo.properties.name}`}
+                    to={`covid-data/${geo.id}`}
                     key={geo.rsmKey}
                   >
                     <Geography
