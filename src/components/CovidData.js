@@ -1,18 +1,10 @@
-import { useLoaderData, useNavigation } from "react-router-dom";
+import React from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import "../common-styles.css";
+
 const loader = async ({ params }) => {
   try {
     const apiKey = process.env.REACT_APP_RAPIDAPI_KEY;
-    // const response = await fetch(
-    //   `https://covid-19-statistics.p.rapidapi.com/provinces?iso=${params.countryCode}`,
-    // 	{
-    // 		method: "GET",
-    // 		headers: {
-    // 			"X-RapidAPI-Key": apiKey,
-    // 			"X-RapidAPI-Host": "covid-19-statistics.p.rapidapi.com",
-    // 		},
-    // 	}
-    // );
-
     const response = await fetch(
       `https://covid-19-statistics.p.rapidapi.com/reports?iso=${params.countryCode}`,
       {
@@ -24,24 +16,12 @@ const loader = async ({ params }) => {
       }
     );
 
-    // const response = await fetch(
-    // 	"https://covid-19-statistics.p.rapidapi.com/reports/total?date=2020-04-07",
-    // 	{
-    // 		method: "GET",
-    // 		headers: {
-    // 			"X-RapidAPI-Key": apiKey,
-    // 			"X-RapidAPI-Host": "covid-19-statistics.p.rapidapi.com",
-    // 		},
-    // 	}
-    // );
-
     console.log("RESPONSE", response);
 
     if (!response.ok) {
       throw new Error("Failed to fetch data");
     }
 
-    // const data = await response.json();
     let data = await response.text();
     data = JSON.parse(data);
     console.log("DATA", data);
@@ -54,69 +34,66 @@ const loader = async ({ params }) => {
 
 const CovidData = () => {
   const covidData = useLoaderData();
-  const navigation = useNavigation();
+  const navigate = useNavigate();
 
-  // console.log("COVID DATA", covidData)
-  console.log("COVID DATA", covidData.data[0]);
-  // handle possible errors in the response
-  // if (covidData.error || covidData.status !== 200) {
-  // 	throw new Error(covidData.message);
-  // }
+  const goBackToMap = () => {
+    navigate("/");
+  };
 
-  if (navigation.state === "loading") {
+  if (covidData.state === "loading") {
     return (
       <div className="flex items-center justify-center h-screen">
         Loading...
       </div>
     );
   } else {
+    const data = covidData.data[0];
+
+    if (!data || Object.keys(data).length === 0) {
+      return (
+        <div className="flex items-center justify-center h-screen">
+          Data not available.
+        </div>
+      );
+    }
+
     return (
-      <div className="flex flex-col items-center justify-center gap-y-3 h-screen">
-        <div>
-          <span className="font-bold">Recovered:</span>{" "}
-          {/* {covidData.data.recovered || "N/A"} */}
-          {covidData.data[0].recovered || "N/A"}
+      <div className="container">
+        <div className="card recovered">
+          <span className="text mr-3">Recovered: </span>{" "}
+          {data.recovered !== null ? data.recovered : "Data not available"}
         </div>
-        <div>
-          {/* <span className='font-bold'>Deaths:</span> {covidData.data.deaths || "N/A"} */}
-          <span className="font-bold">Deaths:</span>{" "}
-          {covidData.data[0].deaths || "N/A"}
+        <div className="card deaths">
+          <span className="text mr-3">Deaths:</span>{" "}
+          {data.deaths !== null ? data.deaths : "Data not available"}
         </div>
-        <div>
-          <span className="font-bold">Confirmed:</span>{" "}
-          {/* {covidData.data.confirmed || "N/A"} */}
-          {covidData.data[0].confirmed || "N/A"}
+        <div className="card confirmed">
+          <span className="text mr-3">Confirmed: </span>{" "}
+          {data.confirmed !== null ? data.confirmed : "Data not available"}
         </div>
-        <div>
-          <span className="font-bold">Last checked:</span>
-          &nbsp;
-          {/* {new Date(covidData.data.lastChecked).toLocaleString() || "N/A"} */}
-          {covidData.data[0].lastChecked
-            ? new Date(covidData.data[0].lastChecked).toLocaleString()
-            : "N/A"}
+        <div className="checked">
+          <span className="text mr-3">Last checked:</span>{" "}
+          {data.lastChecked
+            ? new Date(data.lastChecked).toLocaleString()
+            : "Data not available"}
         </div>
-        <div>
-          <span className="font-bold">Last reported:</span>
-          &nbsp;
-          {/* {new Date(covidData.data.lastReported).toLocaleString() || "N/A"} */}
-          {covidData.data[0].last_update
-            ? new Date(covidData.data[0].last_update).toLocaleString()
-            : "N/A"}
+        <div className="reported">
+          <span className="text mr-3">Last reported:</span>{" "}
+          {data.last_update
+            ? new Date(data.last_update).toLocaleString()
+            : "Data not available"}
         </div>
-        <div>
-          <span className="font-bold">Location:</span>{" "}
-          {covidData.data[0].region
+        <div className="location">
+          <span className="text mr-3">LOCATION:</span>{" "}
+          {data.region
             ? `${
-                covidData.data[0].region.province
-                  ? `${covidData.data[0].region.province.toUpperCase()}, `
+                data.region.province
+                  ? `${data.region.province.toUpperCase()}, `
                   : ""
-              }${
-                covidData.data[0].region.name
-                  ? covidData.data[0].region.name.toUpperCase()
-                  : ""
-              }`
-            : "N/A"}
+              }${data.region.name ? data.region.name.toUpperCase() : ""}`
+            : "Data not available"}
         </div>
+        <button onClick={goBackToMap}>&larr;MAP</button>
       </div>
     );
   }
