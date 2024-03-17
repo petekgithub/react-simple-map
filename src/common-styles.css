@@ -5,6 +5,7 @@ body {
   height: 100vh;
   padding: 2rem;
 }
+
 .container {
   position: absolute;
   top: 50%;
@@ -14,11 +15,33 @@ body {
   margin: 2rem auto;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto repeat(1, 5rem) auto;
+  grid-template-rows: auto 5rem auto repeat(3, 5rem) auto;
   gap: 2rem;
   transition: all 1s;
-  border: 1px solid rgb(189, 189, 189);
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.location {
+  background-image: linear-gradient(to top left, #b8faff, #e3fffb);
   border-radius: 0.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  grid-column: 1 / span 3;
+  margin-top: 3rem;
+  grid-row: 1;
+  height: 4rem;
+  font-weight: bold;
+}
+
+.btn-container {
+  grid-column: 1 / span 3; /* Map butonunun tüm genişliği kaplaması için */
+  display: flex;
+  justify-content: flex-start; /* Yatayda ortalamak için */
+  align-items: center; /* Dikeyde ortalamak için */
+  margin-top: 2rem; /* Butonun üstünde boşluk bırakmak için */
+  grid-row: 5; /* 4. satıra yerleştir */
 }
 
 .card {
@@ -45,14 +68,28 @@ body {
 }
 
 .checked,
-.reported,
-.location {
+.reported {
   background-image: linear-gradient(to top left, #b8faff, #e3fffb);
   border-radius: 0.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  grid-column: span 1; /* Her biri 1 kolon genişliği alacak */
 }
+
+.checked {
+  grid-row: 4; /* 4. satıra yerleştir */
+}
+
+.reported {
+  grid-row: 4; /* 5. satıra yerleştir */
+}
+.checked:hover,
+.reported:hover {
+  background-image: linear-gradient(to top left, #ffeeee, #ffffff);
+}
+
 .text {
   font-weight: bold;
   color: rgb(24, 11, 138);

@@ -93,7 +93,9 @@ const CovidData = () => {
               }${data.region.name ? data.region.name.toUpperCase() : ""}`
             : "Data not available"}
         </div>
-        <button onClick={goBackToMap}>&larr;MAP</button>
+        <button className="btn-container" onClick={goBackToMap}>
+          &larr;map
+        </button>
       </div>
     );
   }
