@@ -39,6 +39,7 @@
    npm start
    ```
 
+<<<<<<< HEAD
 With these commands, you can successfully clone the project to your local machine, install dependencies, and start the project.
 
 ## Accessing the Application
@@ -54,3 +55,10 @@ The optimized production build of the application is served using the serve pack
 
 - Local: [http://localhost:3000](http://localhost:3000)
 - Network: [http://192.168.1.21:3000](http://192.168.1.21:3000)
+=======
+With these commands, you can successfully clone the project to your local machine, install dependencies, and start the project. Visit http://localhost:3000 in your browser to view the project.
+
+![map2](https://github.com/petekgithub/react-simple-map/assets/38165351/3cbdd2ad-990a-4edf-bb34-76ab5ac55eb4)
+![map1](https://github.com/petekgithub/react-simple-map/assets/38165351/0d254e5c-58d4-433a-b58e-beb09a1e8a3a)
+
+>>>>>>> origin/main
