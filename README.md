@@ -40,3 +40,7 @@
    ```
 
 With these commands, you can successfully clone the project to your local machine, install dependencies, and start the project. Visit http://localhost:3000 in your browser to view the project.
+
+![map2](https://github.com/petekgithub/react-simple-map/assets/38165351/3cbdd2ad-990a-4edf-bb34-76ab5ac55eb4)
+![map1](https://github.com/petekgithub/react-simple-map/assets/38165351/0d254e5c-58d4-433a-b58e-beb09a1e8a3a)
+
