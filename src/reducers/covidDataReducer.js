@@ -1,5 +1,3 @@
-// reducers.js
-
 import {
   FETCH_COVID_DATA_REQUEST,
   FETCH_COVID_DATA_SUCCESS,

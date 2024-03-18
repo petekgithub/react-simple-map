@@ -9,10 +9,10 @@ import { fetchData } from "../api/fetchData"; // Sağlık verilerini çeken bir 
 
 function* fetchCovidDataSaga(action) {
   try {
-    const data = yield call(fetchData, action.payload); // Verileri almak için API'yi çağır
-    yield put(fetchCovidDataSuccess(data)); // Başarılı yanıtı gönder
+    const data = yield call(fetchData, action.payload);
+    yield put(fetchCovidDataSuccess(data));
   } catch (error) {
-    yield put(fetchCovidDataFailure(error)); // Hata durumunda hatayı gönder
+    yield put(fetchCovidDataFailure(error));
   }
 }
 

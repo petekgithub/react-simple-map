@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from "redux";
 import covidDataReducer from "../reducers/covidDataReducer";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "../sagas/sagas"; // Dosya yolu burada düzeltildi
+import rootSaga from "../sagas/sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 

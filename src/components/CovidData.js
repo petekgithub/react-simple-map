@@ -18,7 +18,6 @@ const CovidData = () => {
     dispatch(fetchCovidDataRequest(countryCode));
   }, [dispatch, countryCode]);
 
-  // covidData nesnesi tanımlı ve içeriği var mı kontrol edin
   if (!covidData || !covidData.data) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -27,7 +26,6 @@ const CovidData = () => {
     );
   }
 
-  // loading ve error durumlarını kontrol edin
   if (covidData.loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -42,7 +40,6 @@ const CovidData = () => {
     );
   }
 
-  // data nesnesinin tanımlı olduğunu kontrol edin
   if (covidData.data.length === 0) {
     return (
       <div className="flex items-center justify-center h-screen">

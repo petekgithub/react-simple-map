@@ -1,5 +1,3 @@
-// api/fetchData.js
-
 const apiKey = process.env.REACT_APP_RAPIDAPI_KEY;
 const apiUrl = "https://covid-19-statistics.p.rapidapi.com/reports";
 
