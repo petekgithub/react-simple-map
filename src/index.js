@@ -1,28 +1,23 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import { createHashRouter, RouterProvider } from "react-router-dom";
-import "./index.css";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from "react-redux";
 import App from "./App";
-import CovidData, { loader as covidDataLoader } from "./components/CovidData";
+import store from "./store/store";
+import CovidData from "./components/CovidData";
 import ErrorPage from "./components/ErrorPage";
 
-const router = createHashRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "covid-data/:countryCode",
-    element: <CovidData />,
-    errorElement: <ErrorPage />,
-    loader: covidDataLoader,
-  },
-]);
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="covid-data/:countryCode" element={<CovidData />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </Router>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );

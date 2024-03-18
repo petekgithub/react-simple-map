@@ -1,3 +1,7 @@
+// MapChart.js
+
+import React from "react";
+import { Link } from "react-router-dom";
 import {
   ZoomableGroup,
   ComposableMap,
@@ -6,9 +10,8 @@ import {
   Sphere,
   Graticule,
 } from "react-simple-maps";
-import { Link } from "react-router-dom";
 
-const MapChart = ({ setTooltipContent }) => {
+const MapChart = ({ setTooltipContent, covidData }) => {
   return (
     <div data-tip="">
       <ComposableMap projectionConfig={{ rotate: [-10, 0, 0], scale: 147 }}>

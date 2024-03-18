@@ -1,26 +1,20 @@
 import React, { useState } from "react";
-import { useNavigation } from "react-router-dom";
+import { Provider } from "react-redux";
 import ReactTooltip from "react-tooltip";
 import MapChart from "./components/MapChart";
+import store from "./store/store"; // Redux store'u import edin
 
 const App = () => {
   const [content, setContent] = useState("");
-  const navigation = useNavigation();
 
-  if (navigation.state === "loading") {
-    return (
-      <div className="flex items-center justify-center h-screen">
-        Loading...
-      </div>
-    );
-  } else {
-    return (
+  return (
+    <Provider store={store}>
       <div>
         <MapChart setTooltipContent={setContent} />
         <ReactTooltip>{content}</ReactTooltip>
       </div>
-    );
-  }
+    </Provider>
+  );
 };
 
 export default App;
