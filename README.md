@@ -39,4 +39,18 @@
    npm start
    ```
 
-With these commands, you can successfully clone the project to your local machine, install dependencies, and start the project. Visit http://localhost:3000 in your browser to view the project.
+With these commands, you can successfully clone the project to your local machine, install dependencies, and start the project.
+
+## Accessing the Application
+
+- To access the application locally, open [http://localhost:3000](http://localhost:3000) in your web browser.
+- If you are accessing the application from another device on the same network, use [http://172.17.0.2:3000](http://172.17.0.2:3000).
+
+These URLs can be used to access the application running inside your Docker container. The first one provides access via localhost on your Docker host machine, while the second one can be used to access it via an IP address assigned within the Docker network.
+
+### Serving the Application
+
+The optimized production build of the application is served using the serve package.
+
+- Local: [http://localhost:3000](http://localhost:3000)
+- Network: [http://192.168.1.21:3000](http://192.168.1.21:3000)
