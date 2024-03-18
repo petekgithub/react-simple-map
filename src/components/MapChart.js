@@ -13,7 +13,10 @@ import {
 
 const MapChart = ({ setTooltipContent, covidData }) => {
   return (
-    <div data-tip="">
+    <div
+      data-testid="map-chart"
+      onClick={() => setTooltipContent("Hello, world")}
+    >
       <ComposableMap projectionConfig={{ rotate: [-10, 0, 0], scale: 147 }}>
         <ZoomableGroup>
           <Sphere stroke="#E4E5E6" strokeWidth={0.5} />
